@@ -1,1 +1,2 @@
-export * from './warmup'
+export * from "./warmup";
+export * from "./easy";

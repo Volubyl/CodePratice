@@ -5,7 +5,9 @@ import {
   compareTiplets,
   staircase,
   minMaxSum,
-  minMaxSumVersion2
+  minMaxSumVersion2,
+  birthdayCakeCandle,
+  timeConversion
 } from "../business";
 
 test("a very big sum", () => {
@@ -103,4 +105,33 @@ test("Min Max Sum Version 2 ", () => {
   // the max number we could have is :  2+3+4+5+1 000 000 000 =  1 000 000 009
 
   expect(minMaxSumVersion2(inputs)).toEqual([10, 1000000009]);
+});
+
+test("Birthday Cake Candle", () => {
+  let inputs = [3, 2, 1, 3];
+  // max number  = 3 and 2 max number occurences
+  expect(birthdayCakeCandle(inputs)).toBe(2);
+
+  inputs = [1, 1, 2, 1];
+  // max number  = 2 and 1 max number occurences
+  expect(birthdayCakeCandle(inputs)).toBe(1);
+});
+
+test("Time conversion", () => {
+  // PM string
+  let string = "07:05:45PM";
+
+  expect(timeConversion(string)).toBe("19:05:45");
+
+  string = "12:05:45PM";
+
+  expect(timeConversion(string)).toBe("12:05:45");
+
+  // AM string
+  string = "12:05:39AM";
+  expect(timeConversion(string)).toBe("00:05:39");
+
+  string = "04:59:59AM";
+
+  expect(timeConversion(string)).toBe("04:59:59");
 });

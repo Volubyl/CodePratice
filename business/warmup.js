@@ -136,3 +136,42 @@ export const minMaxSumVersion2 = array => {
 
   return [sum - maxNumber, sum - minNumber];
 };
+
+// Time log : 25min
+export const birthdayCakeCandle = arr => {
+  let maxNumber = 0;
+  let maxNumberOccurence = 0;
+  arr.forEach(input => {
+    if (input >= maxNumber) {
+      if (input === maxNumber) {
+        maxNumberOccurence += 1;
+      } else {
+        maxNumberOccurence = 1;
+      }
+      maxNumber = input;
+    }
+  });
+
+  return maxNumberOccurence;
+};
+
+//https://www.hackerrank.com/challenges/time-conversion/problem
+
+// Time log : 50min
+
+export const timeConversion = string => {
+  let [hour, minutes, seconds] = string
+    .substring(0, string.length - 2)
+    .split(":");
+  const AMPM = string.substring(string.length - 2, string.length);
+
+  if (AMPM === "PM" && hour != "12") {
+    hour = (Number(hour) + 12).toString();
+  }
+
+  if (AMPM === "AM" && hour == "12") {
+    hour = "00";
+  }
+
+  return `${hour}:${minutes}:${seconds}`;
+};
