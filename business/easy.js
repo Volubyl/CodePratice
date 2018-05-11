@@ -60,3 +60,34 @@ export const gradingStudentsV2 = array => {
 
   return result;
 };
+
+//https://www.hackerrank.com/challenges/apple-and-orange/problem
+
+//Time log : 50 min;
+
+export const isOnDaHouse = (s, t, fruitPosition) => {
+  if (fruitPosition >= s && fruitPosition <= t) {
+    return true;
+  }
+  return false;
+};
+
+export const appleAndOranges = (s, t, a, b, apples, oranges) => {
+  let appleOnHouse = 0;
+  let orangesOnHouse = 0;
+
+  apples.forEach(apple => {
+    const fruitPosition = a + apple;
+    if (isOnDaHouse(s, t, fruitPosition)) {
+      appleOnHouse++;
+    }
+  });
+
+  oranges.forEach(orange => {
+    const fruitPosition = b + orange;
+    if (isOnDaHouse(s, t, fruitPosition)) {
+      orangesOnHouse++;
+    }
+  });
+  return [appleOnHouse, orangesOnHouse];
+};

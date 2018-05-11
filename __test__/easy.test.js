@@ -1,4 +1,10 @@
-import { cavityMap, gradingStudents, gradingStudentsV2 } from "../business";
+import {
+  cavityMap,
+  gradingStudents,
+  gradingStudentsV2,
+  appleAndOranges,
+  isOnDaHouse
+} from "../business";
 
 test("cavity Map", () => {
   let grid = ["1112", "1912", "1234", "1892"];
@@ -42,4 +48,16 @@ test("grading Students", () => {
 
   expect(gradingStudents(inputs)).toEqual([0, 100, 35, 75, 12, 40]);
   expect(gradingStudentsV2(inputs)).toEqual([0, 100, 35, 75, 12, 40]);
+});
+
+test("oranges and apples", () => {
+  expect(appleAndOranges(7, 11, 5, 15, [-2, 1, 2], [5, -6])).toEqual([1, 1]);
+  expect(appleAndOranges(7, 11, 5, 15, [0, -100, 2], [0, -6])).toEqual([1, 1]);
+});
+
+test("isOnDaHouse", () => {
+  expect(isOnDaHouse(7, 11, 5)).toBe(false);
+  expect(isOnDaHouse(7, 11, 7)).toBe(true);
+  expect(isOnDaHouse(7, 11, 11)).toBe(true);
+  expect(isOnDaHouse(7, 11, 10)).toBe(true);
 });
