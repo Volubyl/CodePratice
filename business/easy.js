@@ -23,3 +23,40 @@ export const cavityMap = grid => {
   result.push(grid[grid.length - 1]);
   return result;
 };
+
+//https://www.hackerrank.com/challenges/grading/problem
+
+//Time log : 30 min;
+
+//what's the most optimised ? V1 or V2 ?
+export const gradingStudents = array => {
+  const result = [];
+
+  array.forEach(grade => {
+    if (grade >= 38) {
+      const multipleOf5 = grade - grade % 5 + 5;
+      if (multipleOf5 - grade < 3) {
+        grade = multipleOf5;
+      }
+      result.push(grade);
+    } else {
+      result.push(grade);
+    }
+  });
+
+  return result;
+};
+
+export const gradingStudentsV2 = array => {
+  const result = [];
+
+  array.forEach(grade => {
+    const multipleOf5 = grade - grade % 5 + 5;
+    if (grade >= 38 && multipleOf5 - grade < 3) {
+      grade = multipleOf5;
+    }
+    result.push(grade);
+  });
+
+  return result;
+};

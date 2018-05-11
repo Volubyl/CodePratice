@@ -1,4 +1,4 @@
-import { cavityMap } from "../business";
+import { cavityMap, gradingStudents, gradingStudentsV2 } from "../business";
 
 test("cavity Map", () => {
   let grid = ["1112", "1912", "1234", "1892"];
@@ -35,4 +35,11 @@ test("cavity Map", () => {
 
   grid = ["9999", "9889", "9889", "1111"];
   expect(cavityMap(grid)).toEqual(["9999", "9889", "9889", "1111"]);
+});
+
+test("grading Students", () => {
+  let inputs = [0, 100, 35, 73, 12, 38];
+
+  expect(gradingStudents(inputs)).toEqual([0, 100, 35, 75, 12, 40]);
+  expect(gradingStudentsV2(inputs)).toEqual([0, 100, 35, 75, 12, 40]);
 });
