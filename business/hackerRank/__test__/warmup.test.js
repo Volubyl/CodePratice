@@ -8,7 +8,7 @@ import {
   minMaxSumVersion2,
   birthdayCakeCandle,
   timeConversion
-} from "../business";
+} from "../warmup";
 
 test("a very big sum", () => {
   const arrayLenght = 5;

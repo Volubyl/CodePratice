@@ -4,7 +4,7 @@ import {
   gradingStudentsV2,
   appleAndOranges,
   isOnDaHouse
-} from "../business";
+} from "../easy";
 
 test("cavity Map", () => {
   let grid = ["1112", "1912", "1234", "1892"];
