@@ -1,4 +1,11 @@
-import { getMiddleCharacter, tribonacci, tickets } from "../fundamentals";
+import {
+  getMiddleCharacter,
+  tribonacci,
+  tickets,
+  tickets3,
+  duplicateEncode,
+  buildHistogram
+} from "../fundamentals";
 
 describe("getMiddleCharacter", () => {
   test("odd length", () => {
@@ -100,25 +107,31 @@ describe("tickes", () => {
     const poepleInLine = [25, 100];
     expect(tickets(poepleInLine)).toEqual("NO");
   });
-  test("thirdCase", () => {
-    const poepleInLine = [
-      25,
-      50,
-      25,
-      100,
-      25,
-      25,
-      25,
-      100,
-      25,
-      50,
-      25,
-      100,
-      25,
-      25,
-      25,
-      100
-    ];
-    expect(tickets(poepleInLine)).toEqual("YES");
+});
+
+describe("duplicate encode", () => {
+  test("buildhistogram", () => {
+    let letters = ["a", "b", "a", "b"];
+    let expectedResult = {
+      a: 2,
+      b: 2
+    };
+    expect(buildHistogram(letters)).toEqual(expectedResult);
+  });
+
+  test("3th test case", () => {
+    let word = "success";
+    let expectedResult = ")())())";
+    expect(duplicateEncode(word)).toEqual(expectedResult);
+  });
+  test("4th test case", () => {
+    let word = "recede";
+    let expectedResult = "()()()";
+    expect(duplicateEncode(word)).toEqual(expectedResult);
+  });
+  test("second test case", () => {
+    let word = "(( @";
+    let expectedResult = "))((";
+    expect(duplicateEncode(word)).toEqual(expectedResult);
   });
 });

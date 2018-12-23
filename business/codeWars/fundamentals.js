@@ -29,19 +29,23 @@ export const tribonacci = (signature, n) => {
   return suite;
 };
 
-export const tickets = peopleInLine => {
+// this variant will break as soon as the clerk could not return money to a customer
+// he won't have the possibility to ask someone to help him to return the due
+export const tickets2 = peopleInLine => {
   let remainingFunds = 0;
   const ticketPrice = 25;
+  let moneyToReturn = 0;
   let answer = "YES";
 
   peopleInLine.some(item => {
     const moneyToReturn = item - ticketPrice;
+
     if (moneyToReturn === 0) {
       remainingFunds += item;
       return false;
     }
-
     const remainingFundsAfterOperation = remainingFunds - moneyToReturn;
+
     if (remainingFundsAfterOperation >= 0) {
       remainingFunds = remainingFundsAfterOperation;
       return false;
@@ -52,4 +56,63 @@ export const tickets = peopleInLine => {
   });
 
   return answer;
+};
+
+export const tickets = peopleInLine => {
+  let remainingFunds = 0;
+  const ticketPrice = 25;
+  let moneyToReturn = 0;
+  let answer = "YES";
+
+  peopleInLine.forEach(item => {
+    const moneyToReturn = item - ticketPrice;
+    if (moneyToReturn === 0) {
+      remainingFunds += item;
+    }
+    const remainingFundsAfterOperation = remainingFunds - moneyToReturn;
+    if (remainingFundsAfterOperation >= 0) {
+      remainingFunds = remainingFundsAfterOperation;
+      answer = "YES";
+    } else {
+      answer = "NO";
+    }
+  });
+
+  return answer;
+};
+
+const buildHistogram = letters => {
+  let workingLetters = [...letters].sort();
+  let prev = undefined;
+  let histogram = {};
+
+  workingLetters.forEach(item => {
+    if (prev !== item) {
+      histogram = {
+        ...histogram,
+        [item]: 1
+      };
+    } else {
+      histogram = {
+        ...histogram,
+        [item]: histogram[item] + 1
+      };
+    }
+    prev = item;
+  });
+
+  return histogram;
+};
+
+const duplicateEncode = word => {
+  const letters = word.toLowerCase().split("");
+  const histogram = buildHistogram(letters);
+  const encodedLetters = letters.map(item => {
+    const letter = histogram[item];
+    if (letter === 1) {
+      return "(";
+    }
+    return ")";
+  });
+  return encodedLetters.join("");
 };
