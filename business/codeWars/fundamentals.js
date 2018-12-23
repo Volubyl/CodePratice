@@ -28,3 +28,28 @@ export const tribonacci = (signature, n) => {
 
   return suite;
 };
+
+export const tickets = peopleInLine => {
+  let remainingFunds = 0;
+  const ticketPrice = 25;
+  let answer = "YES";
+
+  peopleInLine.some(item => {
+    const moneyToReturn = item - ticketPrice;
+    if (moneyToReturn === 0) {
+      remainingFunds += item;
+      return false;
+    }
+
+    const remainingFundsAfterOperation = remainingFunds - moneyToReturn;
+    if (remainingFundsAfterOperation >= 0) {
+      remainingFunds = remainingFundsAfterOperation;
+      return false;
+    } else {
+      answer = "NO";
+      return true;
+    }
+  });
+
+  return answer;
+};

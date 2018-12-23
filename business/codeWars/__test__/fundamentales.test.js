@@ -1,4 +1,4 @@
-import { getMiddleCharacter, tribonacci } from "../fundamentals";
+import { getMiddleCharacter, tribonacci, tickets } from "../fundamentals";
 
 describe("getMiddleCharacter", () => {
   test("odd length", () => {
@@ -87,5 +87,38 @@ describe("tribonnaci", () => {
     let signature = [17, 0, 10];
     let expectedResult = [17, 0, 10];
     expect(tribonacci(signature, n)).toEqual(expectedResult);
+  });
+});
+
+describe("tickes", () => {
+  test("firstCase", () => {
+    const poepleInLine = [25, 25, 50, 50];
+    expect(tickets(poepleInLine)).toEqual("YES");
+  });
+
+  test("secondCase", () => {
+    const poepleInLine = [25, 100];
+    expect(tickets(poepleInLine)).toEqual("NO");
+  });
+  test("thirdCase", () => {
+    const poepleInLine = [
+      25,
+      50,
+      25,
+      100,
+      25,
+      25,
+      25,
+      100,
+      25,
+      50,
+      25,
+      100,
+      25,
+      25,
+      25,
+      100
+    ];
+    expect(tickets(poepleInLine)).toEqual("YES");
   });
 });

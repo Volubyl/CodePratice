@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Jest Tests",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": ["-i"],
+      "args": ["-i", "--lastCommit"],
       "internalConsoleOptions": "openOnSessionStart",
       "outFiles": ["${workspaceRoot}/dist/**/*"]
     }
