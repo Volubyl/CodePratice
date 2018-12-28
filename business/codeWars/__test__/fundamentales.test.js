@@ -4,7 +4,8 @@ import {
   tickets,
   tickets3,
   duplicateEncode,
-  buildHistogram
+  buildHistogram,
+  formatPhoneNumber
 } from "../fundamentals";
 
 describe("getMiddleCharacter", () => {
@@ -134,4 +135,11 @@ describe("duplicate encode", () => {
     let expectedResult = "))((";
     expect(duplicateEncode(word)).toEqual(expectedResult);
   });
+});
+
+test("should format phone number", () => {
+  const phoneNumber = "00-44 48 5555 8361";
+  const expectedResult = "004-448-555-583-61";
+  const result = formatPhoneNumber(phoneNumber);
+  expect(result).toBe(expectedResult);
 });

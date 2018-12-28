@@ -81,7 +81,7 @@ export const tickets = peopleInLine => {
   return answer;
 };
 
-const buildHistogram = letters => {
+export const buildHistogram = letters => {
   let workingLetters = [...letters].sort();
   let prev = undefined;
   let histogram = {};
@@ -104,7 +104,7 @@ const buildHistogram = letters => {
   return histogram;
 };
 
-const duplicateEncode = word => {
+export const duplicateEncode = word => {
   const letters = word.toLowerCase().split("");
   const histogram = buildHistogram(letters);
   const encodedLetters = letters.map(item => {
@@ -115,4 +115,21 @@ const duplicateEncode = word => {
     return ")";
   });
   return encodedLetters.join("");
+};
+
+export const formatPhoneNumber = phoneNumber => {
+  let workingPhoneNumber = phoneNumber;
+  workingPhoneNumber = workingPhoneNumber.replace(/-|\s/g, "");
+  const arrayOfNumber = workingPhoneNumber.split("");
+
+  const reduceFunction = (accumalator, currentItem, index) => {
+    if ((index + 1) % 3 === 0 && index !== 0) {
+      return accumalator.concat(currentItem + "-");
+    }
+    return accumalator.concat(currentItem);
+  };
+
+  const mappedWorkingPhoneNumber = arrayOfNumber.reduce(reduceFunction, "");
+
+  return mappedWorkingPhoneNumber;
 };
