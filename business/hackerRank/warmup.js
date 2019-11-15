@@ -6,7 +6,7 @@ export const veryBigSum = (n, ar) => {
   return sum;
 };
 
-export const diagonalSum = items => {
+export const diagonalSum = (items) => {
   let sumA = 0;
   let sumB = 0;
 
@@ -21,13 +21,13 @@ export const diagonalSum = items => {
 
 // https://www.hackerrank.com/challenges/plus-minus/problem
 
-export const plusOrMinus = array => {
+export const plusOrMinus = (array) => {
   let positive = 0;
   let negative = 0;
   let zeros = 0;
-  const length = array.length;
+  const { length } = array;
 
-  array.forEach(element => {
+  array.forEach((element) => {
     if (element > 0) {
       positive++;
     } else if (element < 0) {
@@ -40,7 +40,7 @@ export const plusOrMinus = array => {
   return [positive / length, negative / length, zeros / length];
 };
 
-//https://www.hackerrank.com/challenges/compare-the-triplets/problem
+// https://www.hackerrank.com/challenges/compare-the-triplets/problem
 
 export const compareTiplets = (a0, a1, a2, b0, b1, b2) => {
   let aScore = 0;
@@ -67,34 +67,34 @@ export const compareTiplets = (a0, a1, a2, b0, b1, b2) => {
   return [aScore, bScore];
 };
 
-//https://www.hackerrank.com/challenges/staircase/problem
+// https://www.hackerrank.com/challenges/staircase/problem
 // Time log : 50min
 
-export const staircase = max => {
-  let string = "";
+export const staircase = (max) => {
+  let string = '';
   for (let index = 1; index <= max; index++) {
     for (let whiteSpace = 1; whiteSpace <= max - index; whiteSpace++) {
-      string += " ";
+      string += ' ';
     }
     for (let hash = 1; hash <= index; hash++) {
-      string += "#";
+      string += '#';
     }
 
-    string += "\n";
+    string += '\n';
   }
 };
 
-//https://www.hackerrank.com/challenges/mini-max-sum/problem
+// https://www.hackerrank.com/challenges/mini-max-sum/problem
 // Time log : 50min
 
-export const minMaxSum = array => {
+export const minMaxSum = (array) => {
   let maxNumber = 0;
   let minNumber = Math.pow(10, 9);
 
   let minSum = 0;
   let maxSum = 0;
 
-  array.forEach(item => {
+  array.forEach((item) => {
     if (item > maxNumber) {
       maxNumber = item;
     }
@@ -105,7 +105,7 @@ export const minMaxSum = array => {
 
   // How to avoid this second loop ?
 
-  array.forEach(item => {
+  array.forEach((item) => {
     if (item !== maxNumber) {
       minSum += item;
     }
@@ -118,13 +118,13 @@ export const minMaxSum = array => {
 };
 
 // Time log : 25min
-export const minMaxSumVersion2 = array => {
+export const minMaxSumVersion2 = (array) => {
   let maxNumber = 0;
   let minNumber = Math.pow(10, 9);
 
   let sum = 0;
 
-  array.forEach(item => {
+  array.forEach((item) => {
     if (item > maxNumber) {
       maxNumber = item;
     }
@@ -138,10 +138,10 @@ export const minMaxSumVersion2 = array => {
 };
 
 // Time log : 25min
-export const birthdayCakeCandle = arr => {
+export const birthdayCakeCandle = (arr) => {
   let maxNumber = 0;
   let maxNumberOccurence = 0;
-  arr.forEach(input => {
+  arr.forEach((input) => {
     if (input >= maxNumber) {
       if (input === maxNumber) {
         maxNumberOccurence += 1;
@@ -155,22 +155,22 @@ export const birthdayCakeCandle = arr => {
   return maxNumberOccurence;
 };
 
-//https://www.hackerrank.com/challenges/time-conversion/problem
+// https://www.hackerrank.com/challenges/time-conversion/problem
 
 // Time log : 50min
 
-export const timeConversion = string => {
+export const timeConversion = (string) => {
   let [hour, minutes, seconds] = string
     .substring(0, string.length - 2)
-    .split(":");
+    .split(':');
   const AMPM = string.substring(string.length - 2, string.length);
 
-  if (AMPM === "PM" && hour != "12") {
+  if (AMPM === 'PM' && hour != '12') {
     hour = (Number(hour) + 12).toString();
   }
 
-  if (AMPM === "AM" && hour == "12") {
-    hour = "00";
+  if (AMPM === 'AM' && hour == '12') {
+    hour = '00';
   }
 
   return `${hour}:${minutes}:${seconds}`;
