@@ -6,6 +6,6 @@ In the repo you can find my implementation of [Breadth First](business/grokkingA
 
 ## Disclaimer
 
-The algorithms implementation containing in this repository are NOT production ready. Those are mainly a "first implementation attempt" and were written for learning purpose only. They could be optimised for sure.
+The algorithms implementation contained in this repository are NOT production ready. Those are mainly a "first implementation attempt" and were written for learning purpose only. They could be optimised for sure.
 
 Please do not use them "as-is".
