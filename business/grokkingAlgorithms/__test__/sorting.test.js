@@ -1,6 +1,6 @@
 import {
-  binarySearch, quickSort, reverse, breathFirst,
-} from '../algorithms';
+  binarySearch, quickSort, reverse,
+} from '../sorting';
 
 describe('Binary Search', () => {
   test('naive case ', () => {
@@ -52,20 +52,5 @@ describe('Reverse', () => {
     const inputs = [1, 2, 3];
     const result = reverse(inputs);
     expect(result).toEqual([3, 2, 1]);
-  });
-});
-
-describe('breathFirst', () => {
-  const graph1 = {
-    me: ['alice', 'bob', 'claire'],
-    bob: ['anuj', 'peggy'],
-    alice: ['peggy'],
-    peggy: ['anuj'],
-    claire: [],
-  };
-
-  const isMangoSeller = (name) => name.startsWith('anu');
-  test('OK case ', () => {
-    expect(breathFirst('me', graph1, isMangoSeller)).toEqual('anuj');
   });
 });
