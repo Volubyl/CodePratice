@@ -1,4 +1,4 @@
-export const cavityMap = grid => {
+export const cavityMap = (grid) => {
   const result = [];
   result.push(grid[0]);
 
@@ -6,7 +6,7 @@ export const cavityMap = grid => {
     const element = grid[y];
     let replacedString = element;
     for (let x = 1; x < element.length - 1; x++) {
-      let item = grid[y][x];
+      const item = grid[y][x];
 
       const top = grid[y - 1][x];
       const bottom = grid[y + 1][x];
@@ -14,7 +14,7 @@ export const cavityMap = grid => {
       const right = grid[y][x + 1];
 
       if (item > top && item > left && item > bottom && item > right) {
-        replacedString = replacedString.replace(item, "X");
+        replacedString = replacedString.replace(item, 'X');
       }
     }
     result.push(replacedString);
@@ -24,15 +24,15 @@ export const cavityMap = grid => {
   return result;
 };
 
-//https://www.hackerrank.com/challenges/grading/problem
+// https://www.hackerrank.com/challenges/grading/problem
 
-//Time log : 30 min;
+// Time log : 30 min;
 
-//what's the most optimised ? V1 or V2 ?
-export const gradingStudents = array => {
+// what's the most optimised ? V1 or V2 ?
+export const gradingStudents = (array) => {
   const result = [];
 
-  array.forEach(grade => {
+  array.forEach((grade) => {
     if (grade >= 38) {
       const multipleOf5 = grade - grade % 5 + 5;
       if (multipleOf5 - grade < 3) {
@@ -47,10 +47,10 @@ export const gradingStudents = array => {
   return result;
 };
 
-export const gradingStudentsV2 = array => {
+export const gradingStudentsV2 = (array) => {
   const result = [];
 
-  array.forEach(grade => {
+  array.forEach((grade) => {
     const multipleOf5 = grade - grade % 5 + 5;
     if (grade >= 38 && multipleOf5 - grade < 3) {
       grade = multipleOf5;
@@ -61,9 +61,9 @@ export const gradingStudentsV2 = array => {
   return result;
 };
 
-//https://www.hackerrank.com/challenges/apple-and-orange/problem
+// https://www.hackerrank.com/challenges/apple-and-orange/problem
 
-//Time log : 50 min;
+// Time log : 50 min;
 
 export const isOnDaHouse = (s, t, fruitPosition) => {
   if (fruitPosition >= s && fruitPosition <= t) {
@@ -76,14 +76,14 @@ export const appleAndOranges = (s, t, a, b, apples, oranges) => {
   let appleOnHouse = 0;
   let orangesOnHouse = 0;
 
-  apples.forEach(apple => {
+  apples.forEach((apple) => {
     const fruitPosition = a + apple;
     if (isOnDaHouse(s, t, fruitPosition)) {
       appleOnHouse++;
     }
   });
 
-  oranges.forEach(orange => {
+  oranges.forEach((orange) => {
     const fruitPosition = b + orange;
     if (isOnDaHouse(s, t, fruitPosition)) {
       orangesOnHouse++;

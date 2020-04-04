@@ -160,7 +160,8 @@ export const birthdayCakeCandle = (arr) => {
 // Time log : 50min
 
 export const timeConversion = (string) => {
-  let [hour, minutes, seconds] = string
+  let [hour] = string;
+  const [minutes, seconds] = string
     .substring(0, string.length - 2)
     .split(':');
   const AMPM = string.substring(string.length - 2, string.length);
@@ -169,7 +170,7 @@ export const timeConversion = (string) => {
     hour = (Number(hour) + 12).toString();
   }
 
-  if (AMPM === 'AM' && hour == '12') {
+  if (AMPM === 'AM' && hour === '12') {
     hour = '00';
   }
 

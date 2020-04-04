@@ -1,11 +1,11 @@
-export const getMiddleCharacter = string => {
-  const charArray = string.split("");
+export const getMiddleCharacter = (string) => {
+  const charArray = string.split('');
   if (charArray.length === 1) {
     return string;
   }
   const middleLenght = charArray.length / 2;
   const flooredLetter = Math.floor(middleLenght);
-  let middleString = "";
+  let middleString = '';
   if (charArray.length % 2 === 0) {
     middleString = middleString
       .concat(charArray[flooredLetter - 1])
@@ -31,13 +31,12 @@ export const tribonacci = (signature, n) => {
 
 // this variant will break as soon as the clerk could not return money to a customer
 // he won't have the possibility to ask someone to help him to return the due
-export const tickets2 = peopleInLine => {
+export const tickets2 = (peopleInLine) => {
   let remainingFunds = 0;
   const ticketPrice = 25;
-  let moneyToReturn = 0;
-  let answer = "YES";
+  let answer = 'YES';
 
-  peopleInLine.some(item => {
+  peopleInLine.some((item) => {
     const moneyToReturn = item - ticketPrice;
 
     if (moneyToReturn === 0) {
@@ -49,22 +48,20 @@ export const tickets2 = peopleInLine => {
     if (remainingFundsAfterOperation >= 0) {
       remainingFunds = remainingFundsAfterOperation;
       return false;
-    } else {
-      answer = "NO";
-      return true;
     }
+    answer = 'NO';
+    return true;
   });
 
   return answer;
 };
 
-export const tickets = peopleInLine => {
+export const tickets = (peopleInLine) => {
   let remainingFunds = 0;
   const ticketPrice = 25;
-  let moneyToReturn = 0;
-  let answer = "YES";
+  let answer = 'YES';
 
-  peopleInLine.forEach(item => {
+  peopleInLine.forEach((item) => {
     const moneyToReturn = item - ticketPrice;
     if (moneyToReturn === 0) {
       remainingFunds += item;
@@ -72,30 +69,30 @@ export const tickets = peopleInLine => {
     const remainingFundsAfterOperation = remainingFunds - moneyToReturn;
     if (remainingFundsAfterOperation >= 0) {
       remainingFunds = remainingFundsAfterOperation;
-      answer = "YES";
+      answer = 'YES';
     } else {
-      answer = "NO";
+      answer = 'NO';
     }
   });
 
   return answer;
 };
 
-export const buildHistogram = letters => {
-  let workingLetters = [...letters].sort();
-  let prev = undefined;
+export const buildHistogram = (letters) => {
+  const workingLetters = [...letters].sort();
+  let prev;
   let histogram = {};
 
-  workingLetters.forEach(item => {
+  workingLetters.forEach((item) => {
     if (prev !== item) {
       histogram = {
         ...histogram,
-        [item]: 1
+        [item]: 1,
       };
     } else {
       histogram = {
         ...histogram,
-        [item]: histogram[item] + 1
+        [item]: histogram[item] + 1,
       };
     }
     prev = item;
@@ -104,32 +101,32 @@ export const buildHistogram = letters => {
   return histogram;
 };
 
-export const duplicateEncode = word => {
-  const letters = word.toLowerCase().split("");
+export const duplicateEncode = (word) => {
+  const letters = word.toLowerCase().split('');
   const histogram = buildHistogram(letters);
-  const encodedLetters = letters.map(item => {
+  const encodedLetters = letters.map((item) => {
     const letter = histogram[item];
     if (letter === 1) {
-      return "(";
+      return '(';
     }
-    return ")";
+    return ')';
   });
-  return encodedLetters.join("");
+  return encodedLetters.join('');
 };
 
-export const formatPhoneNumber = phoneNumber => {
+export const formatPhoneNumber = (phoneNumber) => {
   let workingPhoneNumber = phoneNumber;
-  workingPhoneNumber = workingPhoneNumber.replace(/-|\s/g, "");
-  const arrayOfNumber = workingPhoneNumber.split("");
+  workingPhoneNumber = workingPhoneNumber.replace(/-|\s/g, '');
+  const arrayOfNumber = workingPhoneNumber.split('');
 
   const reduceFunction = (accumalator, currentItem, index) => {
     if ((index + 1) % 3 === 0 && index !== 0) {
-      return accumalator.concat(currentItem + "-");
+      return accumalator.concat(`${currentItem}-`);
     }
     return accumalator.concat(currentItem);
   };
 
-  const mappedWorkingPhoneNumber = arrayOfNumber.reduce(reduceFunction, "");
+  const mappedWorkingPhoneNumber = arrayOfNumber.reduce(reduceFunction, '');
 
   return mappedWorkingPhoneNumber;
 };
